@@ -13,6 +13,22 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 */
 
+
+function c9_emojized_ace_deregister_all_scripts() {
+    // Deregister each script
+    wp_deregister_script('wp-codemirror');
+    wp_deregister_script('csslint');
+    wp_deregister_script('esprima');
+    wp_deregister_script('jshint');
+    wp_deregister_script('jsonlint');
+    wp_deregister_script('htmlhint');
+    wp_deregister_script('htmlhint-kses');
+    wp_deregister_script('code-editor');
+    wp_deregister_script('wp-theme-plugin-editor');
+}
+add_action('admin_enqueue_scripts', 'c9_emojized_ace_deregister_all_scripts', 100);
+
+
 function c9_emojized_ace_admin_script() {
     // Check if we are in the admin area
     if (is_admin()) {
