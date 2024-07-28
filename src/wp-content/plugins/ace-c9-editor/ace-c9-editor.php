@@ -1,19 +1,19 @@
 <?php
 /*
  * Plugin Name:       ACE Cloud9 Code Editor
- * Plugin URI:        https://github.com/ClassicPress/ClassicPress
- * Description:       For enhanced security add a `pepper` to password hashing.
+ * Plugin URI:        https://github.com/emojized/ace-c9-editor
+ * Description:       Replacing the WP/CP Code Editor with the Cloud9 ACE
  * Version:           1.0
  * Requires at least: 4.9.15
  * Requires PHP:      7.4
  * Requires CP:       2.2
- * Author:            The ClassicPress Team
- * Author URI:        https://www.classicpress.net/
- * License:           GPL v2 or later
+ * Author:            The emojized Team
+ * Author URI:        https://emojized.com
+ * License:           GPL v2 and BSD
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 */
 
-function my_custom_admin_script() {
+function c9_emojized_ace_admin_script() {
     // Check if we are in the admin area
     if (is_admin()) {
         // Register and enqueue the script
@@ -27,10 +27,10 @@ function my_custom_admin_script() {
     }
 }
 // Hook into the admin_enqueue_scripts action
-add_action('admin_enqueue_scripts', 'my_custom_admin_script');
+add_action('admin_enqueue_scripts', 'c9_emojized_ace_admin_script');
 
 // Function to enqueue inline script on plugin-editor.php
-function custom_inline_script_for_plugin_editor() {
+function emojized_ace_inline_script_for_plugin_editor() {
     // Get the current screen object
     $current_screen = get_current_screen();
 
@@ -56,7 +56,7 @@ function custom_inline_script_for_plugin_editor() {
 
                             // Initialize Ace editor on the div
                             var editor = ace.edit("ace-editor");
-                            editor.setTheme("ace/theme/katzenmilch");
+                            editor.setTheme("ace/theme/cobalt");
                             editor.session.setMode("ace/mode/php");
                             editor.setValue(textarea.value); // Set initial content
 
@@ -71,7 +71,6 @@ function custom_inline_script_for_plugin_editor() {
     }
 }
 // Hook into admin_enqueue_scripts
-add_action('admin_enqueue_scripts', 'custom_inline_script_for_plugin_editor');
+add_action('admin_enqueue_scripts', 'emojized_ace_inline_script_for_plugin_editor');
 
-// this is real crazy
 
